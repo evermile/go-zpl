@@ -1,6 +1,6 @@
 package main
 
-import "github.com/kamilturek/go-zpl"
+import "github.com/evermile/go-zpl"
 
 func main() {
 	zpl.RunCLI()

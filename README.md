@@ -10,7 +10,7 @@ A wrapper around [Labelary ZPL Web Service](http://labelary.com/service.html).
 Using Go:
 
 ```bash
-go install github.com/kamilturek/go-zpl/cmd/go-zpl@latest
+go install github.com/evermile/go-zpl/cmd/go-zpl@latest
 ```
 
 Using Homebrew:
@@ -22,7 +22,7 @@ brew install kamilturek/tap/go-zpl
 ### Go package
 
 ```bash
-go get github.com/kamilturek/go-zpl
+go get github.com/evermile/go-zpl
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ $ head -n 1 hello.pdf
 ```go
 package main
 
-import "github.com/kamilturek/go-zpl"
+import "github.com/evermile/go-zpl"
 
 func main() {
       // Using convenience wrapper

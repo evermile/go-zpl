@@ -5,8 +5,8 @@ import (
 	"io"
 	"testing"
 
+	"github.com/evermile/go-zpl"
 	"github.com/google/go-cmp/cmp"
-	zpl "github.com/kamilturek/go-zpl"
 )
 
 func TestWithInput(t *testing.T) {
