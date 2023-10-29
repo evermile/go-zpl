@@ -1,4 +1,4 @@
-module github.com/kamilturek/go-zpl
+module github.com/evermile/go-zpl
 
 go 1.18
 

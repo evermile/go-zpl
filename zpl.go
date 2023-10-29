@@ -157,7 +157,12 @@ func (conv *converter) Convert() error {
 }
 
 func (conv *converter) doRequest() (io.ReadCloser, error) {
-	url := fmt.Sprintf("http://api.labelary.com/v1/printers/%ddpmm/labels/%dx%d/0/", conv.density, conv.width, conv.height)
+	firstPageOnly := ""
+	if conv.outputFormat != MULTIPDF {
+		firstPageOnly = "/0"
+	}
+
+	url := fmt.Sprintf("http://api.labelary.com/v1/printers/%ddpmm/labels/%dx%d/%s", conv.density, conv.width, conv.height, firstPageOnly)
 
 	req, err := http.NewRequestWithContext(context.Background(), http.MethodPost, url, conv.Input)
 	if err != nil {
@@ -165,8 +170,9 @@ func (conv *converter) doRequest() (io.ReadCloser, error) {
 	}
 
 	contentTypes := map[string]string{
-		PDF: "application/pdf",
-		PNG: "image/png",
+		PDF:      "application/pdf",
+		MULTIPDF: "application/pdf",
+		PNG:      "image/png",
 	}
 
 	req.Header.Set("Accept", contentTypes[conv.outputFormat])
@@ -219,6 +225,13 @@ func ToPNG(content []byte, opts ...option) ([]byte, error) {
 
 func ToPDF(content []byte, opts ...option) ([]byte, error) {
 	options := []option{WithOutputFormat(PDF)}
+	options = append(options, opts...)
+
+	return ConvertBytes(content, options...)
+}
+
+func ToMultiPDF(content []byte, opts ...option) ([]byte, error) {
+	options := []option{WithOutputFormat(MULTIPDF)}
 	options = append(options, opts...)
 
 	return ConvertBytes(content, options...)

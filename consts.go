@@ -1,8 +1,9 @@
 package zpl
 
 const (
-	PDF = "pdf"
-	PNG = "png"
+	MULTIPDF = "multi_pdf"
+	PDF      = "pdf"
+	PNG      = "png"
 )
 
 func allowedDensities() []int {
@@ -10,5 +11,5 @@ func allowedDensities() []int {
 }
 
 func allowedOutputFormats() []string {
-	return []string{PDF, PNG}
+	return []string{MULTIPDF, PDF, PNG}
 }
